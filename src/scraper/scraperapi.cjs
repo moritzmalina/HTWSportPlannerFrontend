@@ -55,8 +55,10 @@ function cleanText(text) {
             return quoteArray;
         }, cleanText(link.text)); // Bereinigten Text als Argument übergeben
 
-        console.log(quotes);
+        return quotes;
     }
 
     await browser.close();
 })();
+
+export
