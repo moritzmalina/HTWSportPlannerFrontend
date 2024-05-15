@@ -1,3 +1,4 @@
+// server.js
 const express = require('express');
 const puppeteer = require('puppeteer');
 const cors = require('cors'); // Import CORS
@@ -29,6 +30,8 @@ async function scrapeData() {
         return linkList;
     });
 
+    console.log(links); // Log to verify links are being fetched
+
     let quotesArray = [];
 
     for (const link of links) {
@@ -44,37 +47,3 @@ async function scrapeData() {
                 const quoteZeitraum = quoteElement.querySelector(".bs_szr").innerText;
                 const quoteLeitung = quoteElement.querySelector(".bs_skl").innerText;
                 quoteArray.push({
-                    titel: text,
-                    tag: quoteTag,
-                    ort: quoteOrt,
-                    zeit: quoteZeit,
-                    zeitraum: quoteZeitraum,
-                    leitung: quoteLeitung,
-                });
-            }
-            return quoteArray;
-        }, cleanText(link.text));
-
-        quotesArray = quotesArray.concat(quotes);
-    }
-
-    await browser.close();
-    return quotesArray;
-}
-
-function cleanText(text) {
-    return text.replace(/\s*[(*].*/, '').trim();
-}
-
-app.get('/api/quotes', async (req, res) => {
-    try {
-        const quotes = await scrapeData();
-        res.json(quotes);
-    } catch (error) {
-        res.status(500).json({ error: error.message });
-    }
-});
-
-app.listen(port, () => {
-    console.log(`Server is running at http://localhost:${port}`);
-});
