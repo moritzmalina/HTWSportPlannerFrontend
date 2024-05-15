@@ -1,0 +1,1 @@
+export interface Course{name: string; tag: string; ort: string; zeit: string; zeitraum:string; leitung: string}

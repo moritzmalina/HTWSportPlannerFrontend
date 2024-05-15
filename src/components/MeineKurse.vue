@@ -1,6 +1,5 @@
 <template>
   <div>
-
     <h1>Meine Kurse</h1>
     <div class="container mt-3">
       <div class="table-responsive">
@@ -16,12 +15,13 @@
           </tr>
           </thead>
           <tbody>
-          <tr v-for="course in courses" :key="course.id">
+          <tr v-for="course in myCourses" :key="course.id">
             <td>{{ course.name }}</td>
-            <td>{{ course.time }}</td>
-            <td>{{ course.location }}</td>
-            <td>{{ course.startDate }}</td>
-            <td>{{ course.endDate }}</td>
+            <td>{{ course.tag }}</td>
+            <td>{{ course.zeit }}</td>
+            <td>{{ course.zeitraum }}</td>
+            <td>{{ course.ort }}</td>
+            <td>{{ course.leitung }}</td>
             <td><button class="btn btn-info">Bearbeiten</button></td>
           </tr>
           </tbody>
@@ -31,19 +31,18 @@
   </div>
 </template>
 
-<script>
-export default {
+<script lang="ts">
+import { defineComponent } from 'vue';
+import { myCourses } from '@/scraper/testdata';
+
+export default defineComponent({
+  name: 'Kurse',
   data() {
     return {
-      courses: [
-        { id: 1, name: 'Badminton', time: 'Freitag, 15:30 - 17:00', location: 'Treskowallee, Halle B', startDate: '01.03.2024', endDate: '01.08.2024' },
-        { id: 2, name: 'Kickboxen', time: 'Montag, 17:00 - 18:30', location: 'Sporthalle Nord', startDate: '02.03.2024', endDate: '02.08.2024' },
-        { id: 3, name: 'Taek Wan Do', time: 'Mittwoch, 16:00 - 17:30', location: 'Kampfsportzentrum', startDate: '03.03.2024', endDate: '03.08.2024' },
-        { id: 4, name: 'Cha Cha', time: 'Donnerstag, 18:00 - 19:00', location: 'Tanzstudio Ost', startDate: '04.03.2024', endDate: '04.08.2024' }
-      ]
+      myCourses
     };
   }
-};
+});
 </script>
 
 <style scoped>

@@ -1,48 +1,43 @@
-<!-- AlleKurse.vue -->
+<script setup lang="ts">
+import {courses} from "@/scraper/testdata"
+import {extendMyCourses} from "@/scraper/testdata";
+</script>
+
 <template>
   <div>
-    <h1>Alle Kurse</h1>
-    <ul>
-      <li v-for="(quote, index) in quotes" :key="index">
-        <div>
-          <strong>{{ quote.titel }}</strong>
-          <p>Tag: {{ quote.tag }}</p>
-          <p>Ort: {{ quote.ort }}</p>
-          <p>Zeit: {{ quote.zeit }}</p>
-          <p>Zeitraum: {{ quote.zeitraum }}</p>
-          <p>Leitung: {{ quote.leitung }}</p>
-        </div>
-      </li>
-    </ul>
+
+    <h1>Meine Kurse</h1>
+    <div class="container mt-3">
+      <div class="table-responsive">
+        <table class="table table-bordered table-hover">
+          <thead>
+          <tr>
+            <th>Kursname</th>
+            <th>Tag</th>
+            <th>Zeit</th>
+            <th>Zeitraum</th>
+            <th>Ort</th>
+            <th>Leitung</th>
+            <th>Verwalten</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr v-for="course in courses">
+            <td>{{ course.name }}</td>
+            <td>{{ course.tag }}</td>
+            <td>{{ course.zeit }}</td>
+            <td>{{ course.zeitraum }}</td>
+            <td>{{ course.ort }}</td>
+            <td>{{ course.leitung }}</td>
+            <td><button class="btn btn-info" @click="extendMyCourses(course)" >Hinzufügen</button></td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
   </div>
 </template>
 
-<script>
-import axios from 'axios';
-
-export default {
-  data() {
-    return {
-      quotes: []
-    };
-  },
-  methods: {
-    async fetchData() {
-      try {
-        const response = await axios.get('http://localhost:5173/allekurse'); // Ensure this endpoint is correct
-        console.log(response.data); // Log to verify data is being fetched
-        this.quotes = response.data;
-      } catch (error) {
-        console.error('Error fetching quotes:', error);
-      }
-    }
-  },
-  mounted() {
-    this.fetchData();
-  }
-};
-</script>
-
 <style scoped>
-/* Add your styles here */
+
 </style>
