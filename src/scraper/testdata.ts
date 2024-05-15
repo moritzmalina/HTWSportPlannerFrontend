@@ -51,3 +51,10 @@ export let myCourses: Course[] = [];
 export function extendMyCourses(myCoursesAdd : Course){
     myCourses.push(myCoursesAdd);
 }
+
+export function deleteMyCourses(courseName: string) {
+    const index = myCourses.findIndex(course => course.name === courseName);
+    if (index !== -1) {
+        myCourses.splice(index, 1);
+    }
+}

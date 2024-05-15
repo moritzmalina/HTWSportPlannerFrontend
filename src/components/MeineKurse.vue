@@ -15,14 +15,14 @@
           </tr>
           </thead>
           <tbody>
-          <tr v-for="course in myCourses" :key="course.id">
+          <tr v-for="course in myCourses" :key="course.name">
             <td>{{ course.name }}</td>
             <td>{{ course.tag }}</td>
             <td>{{ course.zeit }}</td>
             <td>{{ course.zeitraum }}</td>
             <td>{{ course.ort }}</td>
             <td>{{ course.leitung }}</td>
-            <td><button class="btn btn-info">Bearbeiten</button></td>
+            <td> <button class="btn btn-danger" @click="removeCourse(course.name)">Entfernen</button> </td>
           </tr>
           </tbody>
         </table>
@@ -33,18 +33,24 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { myCourses } from '@/scraper/testdata';
+import { deleteMyCourses, myCourses } from '@/scraper/testdata';
 
 export default defineComponent({
   name: 'Kurse',
   data() {
     return {
-      myCourses
+      myCourses: [...myCourses]
     };
+  },
+  methods: {
+    removeCourse(courseName: string) {
+      deleteMyCourses(courseName);
+      this.myCourses = this.myCourses.filter(course => course.name !== courseName);
+    }
   }
 });
 </script>
 
 <style scoped>
-
+/* Add some styles if needed */
 </style>
