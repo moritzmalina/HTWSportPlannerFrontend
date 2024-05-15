@@ -1,13 +1,46 @@
-<script setup lang="ts">
-
-</script>
-
 <template>
   <div>
-    <h1> Alle Kurse </h1>
+    <h1>Alle Kurse</h1>
+    <ul>
+      <li v-for="(quote, index) in quotes" :key="index">
+        <div>
+          <strong>{{ quote.titel }}</strong>
+          <p>Tag: {{ quote.tag }}</p>
+          <p>Ort: {{ quote.ort }}</p>
+          <p>Zeit: {{ quote.zeit }}</p>
+          <p>Zeitraum: {{ quote.zeitraum }}</p>
+          <p>Leitung: {{ quote.leitung }}</p>
+        </div>
+      </li>
+    </ul>
   </div>
 </template>
 
-<style scoped>
+<script>
+import axios from 'axios';
 
+export default {
+  data() {
+    return {
+      quotes: []
+    };
+  },
+  methods: {
+    async fetchData() {
+      try {
+        const response = await axios.get('http://localhost:5173/api/quotes');
+        this.quotes = response.data;
+      } catch (error) {
+        console.error('Error fetching quotes:', error);
+      }
+    }
+  },
+  mounted() {
+    this.fetchData();
+  }
+};
+</script>
+
+<style scoped>
+/* Add your styles here */
 </style>
