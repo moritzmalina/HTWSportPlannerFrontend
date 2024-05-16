@@ -7,9 +7,9 @@
       <img src="@/assets/images/Q04_HTW_Berlin_Logo_quer_pos_FARBIG_RGB.jpg" alt="HTW Berlin Logo" width="300" height="70">
     </div>
     <nav>
-      <button class="btn btn-outline-primary" style="margin-right: 8px;"><RouterLink to="/">Home</RouterLink></button>
-      <button class="btn btn-outline-primary" style="margin-right: 8px;"><RouterLink to="/allekurse">Alle Kurse</RouterLink></button>
-      <button class="btn btn-outline-primary"><RouterLink to="/kalender">Kalender</RouterLink></button>
+      <button class=" shadow-sm btn btn-outline-primary" style="margin-right: 8px;"><RouterLink to="/">Meine Kurse</RouterLink></button>
+      <button class="shadow-sm btn btn-outline-primary" style="margin-right: 8px;"><RouterLink to="/allekurse">Alle Kurse</RouterLink></button>
+      <button class="shadow-sm btn btn-outline-primary"><RouterLink to="/kalender">Kalender</RouterLink></button>
     </nav>
   </header>
   <body>
@@ -21,8 +21,9 @@
 
 <style scoped>
 nav{
-  text-align: left;
-  width: 50%;
+  margin-left: 35%;
+  text-align: center;
+  width: 25%;
 }
 
 </style>

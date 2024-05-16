@@ -6,7 +6,7 @@ import {extendMyCourses} from "@/scraper/testdata";
 <template>
   <div>
 
-    <h1>Meine Kurse</h1>
+    <h1>Alle Kurse</h1>
     <div class="container mt-3">
       <div class="table-responsive">
         <table class="table table-bordered table-hover">
@@ -39,5 +39,7 @@ import {extendMyCourses} from "@/scraper/testdata";
 </template>
 
 <style scoped>
-
+h1{
+  margin-left: 7vw;
+}
 </style>

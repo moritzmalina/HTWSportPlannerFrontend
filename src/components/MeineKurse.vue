@@ -52,5 +52,7 @@ export default defineComponent({
 </script>
 
 <style scoped>
-/* Add some styles if needed */
+h1{
+  margin-left: 7vw;
+}
 </style>

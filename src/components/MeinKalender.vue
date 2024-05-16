@@ -14,6 +14,7 @@ const tage: string[] = ["Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag
 
 <style scoped>
 .container{
+
   background-color: whitesmoke;
   margin-top: 5vh;
   border-radius: 10px;
@@ -21,6 +22,7 @@ const tage: string[] = ["Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag
   gap: 6vw;
 }
 .containerDay{
+  margin: auto;
   margin-top: 2vh;
 }
 </style>
