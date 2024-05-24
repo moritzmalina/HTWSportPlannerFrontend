@@ -3,8 +3,8 @@
 const kurse : string []= [];
 
 function loadKurse() {
-  // const baseUrl = process.env.VUE_APP_BACKEND_BASE_URL;
-  const endpoint = "https://htwsportplannerfrontend.onrender.com/entries";
+  const baseUrl = import.meta.env.VUE_APP_BACKEND_BASE_URL;
+  const endpoint = baseUrl + '/entries';
   const requestOptions: any = {
     method: 'GET',
     redirect: 'follow'
