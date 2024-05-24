@@ -24,11 +24,10 @@ import LoadButton from '@/components/LoadButton.vue'
           </tr>
           </thead>
           <tbody>
-          <tr v-for="course in courses">
+          <tr v-for="course in courses" :key="course.name">
             <td>{{ course.name }}</td>
             <td>{{ course.tag }}</td>
             <td>{{ course.zeit }}</td>
-            <td>{{ course.zeitraum }}</td>
             <td>{{ course.ort }}</td>
             <td>{{ course.leitung }}</td>
             <td><button class="btn btn-info" @click="extendMyCourses(course)" >Hinzufügen</button></td>
