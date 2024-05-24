@@ -1,25 +1,14 @@
 <script setup lang="ts">
 
-const kurse : string []= [];
 
-function loadKurse() {
-  //const baseUrl = import.meta.env.VUE_APP_BACKEND_BASE_URL;
-  const endpoint = 'https://htwsportplanner.onrender.com/entries';
-  const requestOptions: any = {
-    method: 'GET',
-    redirect: 'follow'
-  };
-  fetch(endpoint, requestOptions)
-    .then(res => res.json())
-    .then(result => {
-      result.forEach((entry:any) => kurse.push(entry));
-    })
-    .catch(error => console.log('error', error));
-}
+
+import {loadKurse} from "@/scraper/testdata";
+import {kurse} from "@/scraper/testdata";
 </script>
 
 <template>
   <button @click="loadKurse">Load Kurse</button>
+  <p> {{ kurse }} </p>
 </template>
 
 <style scoped>

@@ -65,3 +65,20 @@ export function deleteMyCourses(courseName: string) {
         myCourses.splice(index, 1);
     }
 }
+
+
+
+export function loadKurse() {
+    //const baseUrl = import.meta.env.VUE_APP_BACKEND_BASE_URL;
+    const endpoint = 'https://htwsportplanner.onrender.com/entries';
+    const requestOptions: any = {
+        method: 'GET',
+        redirect: 'follow'
+    };
+    fetch(endpoint, requestOptions)
+        .then(res => res.json())
+        .then(result => {
+            result.forEach((entry:any) => kurse.push(entry));
+        })
+        .catch(error => console.log('error', error));
+}
