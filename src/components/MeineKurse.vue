@@ -19,7 +19,6 @@
             <td>{{ course.name }}</td>
             <td>{{ course.tag }}</td>
             <td>{{ course.zeit }}</td>
-            <td>{{ course.zeitraum }}</td>
             <td>{{ course.ort }}</td>
             <td>{{ course.leitung }}</td>
             <td> <button class="btn btn-danger" @click="removeCourse(course.name)">Entfernen</button> </td>
