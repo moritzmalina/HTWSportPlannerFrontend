@@ -1,12 +1,14 @@
 <script setup lang="ts">
 import {courses} from "@/scraper/testdata"
 import {extendMyCourses} from "@/scraper/testdata";
+import LoadButton from '@/components/LoadButton.vue'
 </script>
 
 <template>
   <div>
 
     <h1>Alle Kurse</h1>
+    <LoadButton></LoadButton>
     <div class="container mt-3">
       <div class="table-responsive">
         <table class="table table-bordered table-hover">
