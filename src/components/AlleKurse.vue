@@ -28,6 +28,7 @@ import LoadButton from '@/components/LoadButton.vue'
             <td>{{ course.name }}</td>
             <td>{{ course.tag }}</td>
             <td>{{ course.zeit }}</td>
+            <td></td>
             <td>{{ course.ort }}</td>
             <td>{{ course.leitung }}</td>
             <td><button class="btn btn-info" @click="extendMyCourses(course)" >Hinzufügen</button></td>
