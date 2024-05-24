@@ -4,7 +4,8 @@ const kurse : string []= [];
 
 function loadKurse() {
   const baseUrl = process.env.VUE_APP_BACKEND_BASE_URL;
-  const endpoint = baseUrl + "/entries";
+  const endpoint = `${baseUrl}/entries`;
+  console.log('Fetching from:', endpoint);
   const requestOptions: any = {
     method: 'GET',
     redirect: 'follow'
