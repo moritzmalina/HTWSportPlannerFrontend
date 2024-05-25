@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { myCourses } from '@/scraper/testdata';
 const props = defineProps({
   tag: String})
 </script>
