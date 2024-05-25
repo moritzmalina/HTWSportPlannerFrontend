@@ -8,7 +8,7 @@ import {kurse} from "@/scraper/testdata";
       <h5>{{ tag }}</h5>
 
   <ul v-for="kurs in kurse" :key="kurs.name">
-    <li v-if="kurs.tag === tag">
+    <li v-if="kurs.tag === tag && kurs.selected">
       {{ kurs.name }} <br>
       {{kurs.ort}} <br>
       {{kurs.zeit}}
