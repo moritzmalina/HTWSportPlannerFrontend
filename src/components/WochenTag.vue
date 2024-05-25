@@ -6,16 +6,18 @@ const props = defineProps({
 
 <template>
       <h5>{{ tag }}</h5>
-      <ul v-for="course in myCourses" :key="course.name">
+
+</template>
+
+<style scoped>
+/*
+    <ul v-for="course in myCourses" :key="course.name">
         <li v-if="course.tag === tag">
           {{ course.name }} <br>
           {{course.ort}} <br>
           {{course.zeit}}
         </li>
       </ul>
-
-</template>
-
-<style scoped>
+*/
 
 </style>
