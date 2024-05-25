@@ -1,5 +1,7 @@
 import type {Course} from "@/assets/interfaces";
-export const kurse : string []= [];
+import { ref } from 'vue';
+
+export const kurse = ref<any[]>([]);
 
 export const courses : Course[] = [
     {
@@ -69,7 +71,6 @@ export function deleteMyCourses(courseName: string) {
 
 
 export function loadKurse() {
-    //const baseUrl = import.meta.env.VUE_APP_BACKEND_BASE_URL;
     const endpoint = 'https://htwsportplanner.onrender.com/entries';
     const requestOptions: any = {
         method: 'GET',
@@ -78,9 +79,8 @@ export function loadKurse() {
     fetch(endpoint, requestOptions)
         .then(res => res.json())
         .then(result => {
-            result.forEach((entry:any) => kurse.push(entry));
-            console.log(kurse);
+            kurse.value = result;
+            console.log(kurse.value); // Ensure this logs the fetched data
         })
-
         .catch(error => console.log('error', error));
 }
