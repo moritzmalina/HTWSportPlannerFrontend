@@ -14,10 +14,10 @@ import { extendMyCourses } from "@/scraper/testdata";
           <thead>
           <tr>
             <th>Kursname</th>
-            <th>Ort</th>
+            <th>Tag</th>
             <th>Zeit</th>
             <th>Zeitraum</th>
-            <th>Tag</th>
+            <th>Ort</th>
             <th>Leitung</th>
             <th>Verwalten</th>
           </tr>
