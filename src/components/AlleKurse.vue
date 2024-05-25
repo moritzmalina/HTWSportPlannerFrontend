@@ -6,7 +6,9 @@ import {extendMyCourses} from "@/scraper/testdata";
 <template>
   <div>
 <button @click="loadKurse()"></button>
-    <div v-for="kurs in kurse">{{kurs}}</div>
+    <div v-for="kurs in kurse">
+      <p>{{kurs}}}</p>
+    </div>
     <h1>Alle Kurse</h1>
     <div class="container mt-3">
       <div class="table-responsive">

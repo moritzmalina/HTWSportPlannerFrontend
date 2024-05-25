@@ -1,5 +1,5 @@
 import type {Course} from "@/assets/interfaces";
-export const kurse : Course []= [];
+export const kurse : string []= [];
 
 export const courses : Course[] = [
     {
