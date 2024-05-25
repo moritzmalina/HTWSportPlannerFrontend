@@ -7,9 +7,9 @@
           <thead>
           <tr>
             <th>Kursname</th>
-            <th>Ort</th>
-            <th>Zeitpunkt</th>
             <th>Tag</th>
+            <th>Zeitpunkt</th>
+            <th>Ort</th>
             <th>Kursbeginn</th>
             <th>Kursende</th>
             <th>Leitung</th>

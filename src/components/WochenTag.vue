@@ -14,6 +14,7 @@ import {kurse} from "@/scraper/testdata";
       {{kurs.zeit}}
     </li>
   </ul>
+
 </template>
 
 <style scoped>
