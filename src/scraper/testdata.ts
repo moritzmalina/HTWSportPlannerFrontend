@@ -79,8 +79,16 @@ export function loadKurse() {
     fetch(endpoint, requestOptions)
         .then(res => res.json())
         .then(result => {
-            kurse.value = result;
-            console.log(kurse.value); // Ensure this logs the fetched data
+            kurse.value = result.map((entry: any) => ({
+                name: entry.courseName,
+                tag: entry.weekDay,
+                ort: entry.place,
+                zeit: entry.courseTime,
+                datumstart: entry.startDate,
+                datumende: entry.endDate,
+                leitung: entry.management,
+            } as Course));
+            console.log(kurse.value);
         })
         .catch(error => console.log('error', error));
 }
