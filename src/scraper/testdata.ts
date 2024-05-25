@@ -79,6 +79,8 @@ export function loadKurse() {
         .then(res => res.json())
         .then(result => {
             result.forEach((entry:any) => kurse.push(entry));
+            console.log(kurse);
         })
+
         .catch(error => console.log('error', error));
 }
