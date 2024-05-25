@@ -1,59 +1,9 @@
 import type {Course} from "@/assets/interfaces";
 import { ref } from 'vue';
 
-export const kurse = ref<any[]>([]);
+export const courses = ref<any[]>([]);
 
-export const courses : Course[] = [
-    {
-        name: 'Badminton',
-        tag: 'Montag',
-        ort: 'Treskowallee',
-        zeit: '11:30',
-        datumstart: '01.01',
-        datumende: '02.02',
-        leitung: 'Frank'
-    },
-    {
-        name: 'Kickboxen',
-        tag: 'Dienstag',
-        ort: 'Treskowallee',
-        zeit: '14:30',
-        datumstart: '01.01',
-        datumende: '02.02',
-        leitung: 'Tanja'
-    },    {
-        name: 'Cha Cha',
-        tag: 'Mittwoch',
-        ort: 'Willhelminenhof',
-        zeit: '10:00',
-        datumstart: '01.01',
-        datumende: '02.02',
-        leitung: 'Simone'
-    },    {
-        name: 'Karate',
-        tag: 'Donnerstag',
-        ort: 'Treskowallee',
-        zeit: '11:30',
-        datumstart: '01.01',
-        datumende: '02.02',
-        leitung: 'Adnan'
-    },    {
-        name: 'Bouldern',
-        tag: 'Montag',
-        ort: 'Treskowallee',
-        zeit: '11:30',
-        datumstart: '01.01',
-        datumende: '02.02',
-        leitung: 'Dominik'
-    },    {
-        name: 'Workout',
-        tag: 'Freitag',
-        ort: 'Willhelminenhof',
-        zeit: '16:30',
-        datumstart: '01.01',
-        datumende: '02.02',
-        leitung: 'Edmund'
-    }]
+
 
 export const myCourses: Course[] = [];
 
@@ -79,7 +29,7 @@ export function loadKurse() {
     fetch(endpoint, requestOptions)
         .then(res => res.json())
         .then(result => {
-            kurse.value = result.map((entry: any) => ({
+            courses.value = result.map((entry: any) => ({
                 name: entry.courseName,
                 tag: entry.weekDay,
                 ort: entry.place,
