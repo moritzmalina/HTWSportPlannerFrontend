@@ -1,24 +1,21 @@
-import type {Course} from "@/assets/interfaces";
+import type { Course } from "@/assets/interfaces";
 import { ref } from 'vue';
 
-export const courses = ref<any[]>([]);
+export const kurse = ref<Course[]>([]);
 
-
-
-export const myCourses: Course[] = [];
-
-export function extendMyCourses(myCoursesAdd : Course){
-    myCourses.push(myCoursesAdd);
-}
-
-export function deleteMyCourses(courseName: string) {
-    const index = myCourses.findIndex(course => course.name === courseName);
-    if (index !== -1) {
-        myCourses.splice(index, 1);
+export function extendMyCourses(myCoursesAdd: Course) {
+    const course = kurse.value.find(c => c.name === myCoursesAdd.name);
+    if (course) {
+        course.selected = true;  // Mark the course as selected
     }
 }
 
-
+export function deleteMyCourses(courseName: string) {
+    const course = kurse.value.find(c => c.name === courseName);
+    if (course) {
+        course.selected = false;  // Unmark the course as selected
+    }
+}
 
 export function loadKurse() {
     const endpoint = 'https://htwsportplanner.onrender.com/entries';
@@ -29,7 +26,7 @@ export function loadKurse() {
     fetch(endpoint, requestOptions)
         .then(res => res.json())
         .then(result => {
-            courses.value = result.map((entry: any) => ({
+            kurse.value = result.map((entry: any) => ({
                 name: entry.courseName,
                 tag: entry.weekDay,
                 ort: entry.place,
@@ -37,8 +34,9 @@ export function loadKurse() {
                 datumstart: entry.startDate,
                 datumende: entry.endDate,
                 leitung: entry.management,
+                selected: false  // Initialize as not selected
             } as Course));
-            console.log(courses.value);
+            console.log(kurse.value);
         })
         .catch(error => console.log('error', error));
 }

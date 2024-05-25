@@ -1,13 +1,14 @@
 <script setup lang="ts">
-import {courses, kurse, loadKurse} from "@/scraper/testdata"
-import {extendMyCourses} from "@/scraper/testdata";
+import { kurse, loadKurse } from "@/scraper/testdata";
+import { extendMyCourses } from "@/scraper/testdata";
+
 </script>
 
 <template>
   <div>
-<button @click="loadKurse()"></button>
-    <div v-for="kurs in kurse">
-      <p>{{kurs}}}</p>
+    <button @click="loadKurse">Load Courses</button>
+    <div v-for="(kurs, index) in kurse" :key="index">
+      <p>{{ kurs.name }} - {{ kurs.tag }} - {{ kurs.ort }} - {{ kurs.zeit }} - {{ kurs.datumstart }} - {{ kurs.datumende }} - {{ kurs.leitung }}</p>
     </div>
     <h1>Alle Kurse</h1>
     <div class="container mt-3">
@@ -25,14 +26,16 @@ import {extendMyCourses} from "@/scraper/testdata";
           </tr>
           </thead>
           <tbody>
-          <tr v-for="course in courses" :key="course.name">
+          <tr v-for="course in kurse" :key="course.name">
             <td>{{ course.name }}</td>
             <td>{{ course.tag }}</td>
             <td>{{ course.zeit }}</td>
-            <td></td>
+            <td>{{ course.datumstart }} - {{ course.datumende }}</td>
             <td>{{ course.ort }}</td>
             <td>{{ course.leitung }}</td>
-            <td><button class="btn btn-info" @click="extendMyCourses(course)" >Hinzufügen</button></td>
+            <td>
+              <button class="btn btn-info" @click="extendMyCourses(course)">Hinzufügen</button>
+            </td>
           </tr>
           </tbody>
         </table>
@@ -42,7 +45,7 @@ import {extendMyCourses} from "@/scraper/testdata";
 </template>
 
 <style scoped>
-h1{
+h1 {
   margin-left: 7vw;
 }
 </style>

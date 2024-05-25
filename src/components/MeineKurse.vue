@@ -7,10 +7,12 @@
           <thead>
           <tr>
             <th>Kursname</th>
+            <th>Tag</th>
             <th>Zeitpunkt</th>
             <th>Ort</th>
             <th>Kursbeginn</th>
             <th>Kursende</th>
+            <th>Leitung</th>
             <th>Verwalten</th>
           </tr>
           </thead>
@@ -20,8 +22,12 @@
             <td>{{ course.tag }}</td>
             <td>{{ course.zeit }}</td>
             <td>{{ course.ort }}</td>
+            <td>{{ course.datumstart }}</td>
+            <td>{{ course.datumende }}</td>
             <td>{{ course.leitung }}</td>
-            <td> <button class="btn btn-danger" @click="removeCourse(course.name)">Entfernen</button> </td>
+            <td>
+              <button class="btn btn-danger" @click="removeCourse(course.name)">Entfernen</button>
+            </td>
           </tr>
           </tbody>
         </table>
@@ -31,27 +37,33 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
-import { deleteMyCourses, myCourses } from '@/scraper/testdata';
+import { defineComponent, computed } from 'vue';
+import { deleteMyCourses, kurse } from '@/scraper/testdata';
 
 export default defineComponent({
   name: 'Kurse',
-  data() {
-    return {
-      myCourses: [...myCourses]
-    };
-  },
-  methods: {
-    removeCourse(courseName: string) {
+  setup() {
+    const myCourses = computed(() => kurse.value.filter(course => course.selected));
+
+    const removeCourse = (courseName: string) => {
       deleteMyCourses(courseName);
-      this.myCourses = this.myCourses.filter(course => course.name !== courseName);
-    }
+      // This removes the selected flag
+      const course = kurse.value.find(course => course.name === courseName);
+      if (course) {
+        course.selected = false;
+      }
+    };
+
+    return {
+      myCourses,
+      removeCourse
+    };
   }
 });
 </script>
 
 <style scoped>
-h1{
+h1 {
   margin-left: 7vw;
 }
 </style>
