@@ -88,7 +88,7 @@ export function loadKurse() {
                 datumende: entry.endDate,
                 leitung: entry.management,
             } as Course));
-            console.log(kurse.value);
+            console.log(courses.value);
         })
         .catch(error => console.log('error', error));
 }
