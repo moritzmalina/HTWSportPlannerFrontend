@@ -7,12 +7,12 @@
           <thead>
           <tr>
             <th>Kursname</th>
-            <th>Tag</th>
+            <th>Leitung</th>
             <th>Zeitpunkt</th>
             <th>Ort</th>
             <th>Kursbeginn</th>
             <th>Kursende</th>
-            <th>Leitung</th>
+            <th>Tag</th>
             <th>Verwalten</th>
           </tr>
           </thead>
