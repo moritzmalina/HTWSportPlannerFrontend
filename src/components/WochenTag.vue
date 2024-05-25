@@ -1,22 +1,22 @@
 <script setup lang="ts">
 const props = defineProps({
   tag: String})
+import {kurse} from "@/scraper/testdata";
 </script>
 
 <template>
       <h5>{{ tag }}</h5>
 
+  <ul v-for="kurs in kurse" :key="kurs.name">
+    <li v-if="kurs.tag === tag">
+      {{ kurs.name }} <br>
+      {{kurs.ort}} <br>
+      {{kurs.zeit}}
+    </li>
+  </ul>
 </template>
 
 <style scoped>
-/*
-    <ul v-for="course in myCourses" :key="course.name">
-        <li v-if="course.tag === tag">
-          {{ course.name }} <br>
-          {{course.ort}} <br>
-          {{course.zeit}}
-        </li>
-      </ul>
-*/
+
 
 </style>
