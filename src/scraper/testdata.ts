@@ -19,6 +19,7 @@ export function deleteMyCourses(courseName: string) {
 
 export function loadKurse() {
     const baseURL = import.meta.env.VITE_APP_BACKEND_BASE_URL;
+    console.log('Base URL:', import.meta.env.VITE_APP_BACKEND_BASE_URL);
     const endpoint = baseURL + '/entries';
     const requestOptions: any = {
         method: 'GET',
@@ -38,7 +39,6 @@ export function loadKurse() {
                 selected: false  // Initialize as not selected
             } as Course));
             console.log(kurse.value);
-            console.log(baseURL);
         })
         .catch(error => console.log('error', error));
 }
