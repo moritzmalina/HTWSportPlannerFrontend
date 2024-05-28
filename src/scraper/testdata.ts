@@ -38,6 +38,7 @@ export function loadKurse() {
                 selected: false  // Initialize as not selected
             } as Course));
             console.log(kurse.value);
+            console.log(baseURL);
         })
         .catch(error => console.log('error', error));
 }
