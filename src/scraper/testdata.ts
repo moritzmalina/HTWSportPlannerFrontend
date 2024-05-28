@@ -18,7 +18,8 @@ export function deleteMyCourses(courseName: string) {
 }
 
 export function loadKurse() {
-    const endpoint = 'https://htwsportplanner.onrender.com/entries';
+    const baseURL = import.meta.env.VITE_APP_BACKEND_BASE_URL;
+    const endpoint = baseURL + '/entries';
     const requestOptions: any = {
         method: 'GET',
         redirect: 'follow'
