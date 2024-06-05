@@ -1,5 +1,6 @@
 import type { Course } from "@/assets/interfaces";
 import { ref } from 'vue';
+import axios from 'axios';
 
 export const kurse = ref<Course[]>([]);
 
@@ -41,4 +42,11 @@ export function loadKurse() {
             console.log(kurse.value);
         })
         .catch(error => console.log('error', error));
+}
+
+export function requestCourses(){
+    axios
+        .get<Course[]>('http://localhost:8080/')
+        .then((response) => (kurse.value = response.data))
+        .catch((error) => console.log(error))
 }
