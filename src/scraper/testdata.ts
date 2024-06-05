@@ -7,14 +7,14 @@ export const kurse = ref<Course[]>([]);
 export function extendMyCourses(myCoursesAdd: Course) {
     const course = kurse.value.find(c => c.name === myCoursesAdd.name);
     if (course) {
-        course.selected = true;  // Mark the course as selected
+        course.selected = true;
     }
 }
 
 export function deleteMyCourses(courseName: string) {
     const course = kurse.value.find(c => c.name === courseName);
     if (course) {
-        course.selected = false;  // Unmark the course as selected
+        course.selected = false;
     }
 }
 
@@ -37,16 +37,36 @@ export function loadKurse() {
                 datumstart: entry.startDate,
                 datumende: entry.endDate,
                 leitung: entry.management,
-                selected: false  // Initialize as not selected
+                selected: false
             } as Course));
             console.log(kurse.value);
         })
         .catch(error => console.log('error', error));
 }
 
-export function requestCourses(){
+export function requestCourses() {
     axios
-        .get<Course[]>('http://localhost:8080/')
-        .then((response) => (kurse.value = response.data))
-        .catch((error) => console.log(error))
+        .get<any>('https://htwsportplanner.onrender.com/entries/1')
+        .then((response) => {
+            console.log(response.data); // Log the API response to inspect its structure
+
+            // Transform the single course object into an array containing one Course object
+            const courseData = response.data;
+            const course: Course = {
+                id: courseData.id,
+                name: courseData.courseName,
+                tag: courseData.weekDay,
+                ort: courseData.place,
+                zeit: courseData.courseTime,
+                datumstart: courseData.startDate,
+                datumende: courseData.endDate,
+                leitung: courseData.management,
+                selected: false
+                // Optionally add other properties here
+            };
+            kurse.value = [course]; // Assign an array containing the course object to kurse.value
+            console.log(kurse.value);
+        })
+        .catch((error) => console.log(error));
 }
+

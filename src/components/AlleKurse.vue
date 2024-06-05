@@ -1,12 +1,16 @@
 <script setup lang="ts">
-import {kurse, loadKurse, requestCourses} from "@/scraper/testdata";
+import {kurse, requestCourses} from "@/scraper/testdata";
 import { extendMyCourses } from "@/scraper/testdata";
 
+import { onMounted } from 'vue';
+onMounted(() => {
+  requestCourses();
+});
 </script>
 
 <template>
   <div>
-    <button @click="loadKurse()">Load Courses</button>
+    <!-- <button @click="requestCourses()">Load Courses</button> -->
     <h1>Alle Kurse</h1>
     <div class="container mt-3">
       <div class="table-responsive">
