@@ -19,7 +19,7 @@ export function deleteMyCourses(courseName: string) {
 
 export function loadKurse() {
    const baseURL = import.meta.env.VITE_APP_BACKEND_BASE_URL;
-    const endpoint = baseURL + '/entries';
+    const endpoint = baseURL + '/entries/1';
     const requestOptions: any = {
         method: 'GET',
         redirect: 'follow'
