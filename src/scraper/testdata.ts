@@ -28,6 +28,7 @@ export function loadKurse() {
         .then(res => res.json())
         .then(result => {
             kurse.value = result.map((entry: any) => ({
+                id: entry.id,
                 name: entry.courseName,
                 tag: entry.weekDay,
                 ort: entry.place,
