@@ -6,7 +6,7 @@ import { extendMyCourses } from "@/scraper/testdata";
 
 <template>
   <div>
-    <button @click="requestCourses()">Load Courses</button>
+    <button @click="loadKurse()">Load Courses</button>
     <h1>Alle Kurse</h1>
     <div class="container mt-3">
       <div class="table-responsive">
