@@ -69,4 +69,3 @@ export function requestCourses() {
         .catch((error) => console.log(error));
 }
 
-
