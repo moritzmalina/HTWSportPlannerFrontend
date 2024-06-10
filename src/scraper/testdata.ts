@@ -46,27 +46,27 @@ export function loadKurse() {
 
 export function requestCourses() {
     axios
-        .get<any>('https://htwsportplanner.onrender.com/entries/1')
+        .get<any>('https://htwsportplanner.onrender.com/entries')
         .then((response) => {
             console.log(response.data); // Log the API response to inspect its structure
 
-            // Transform the single course object into an array containing one Course object
-            const courseData = response.data;
-            const course: Course = {
-                id: courseData.id,
-                name: courseData.courseName,
-                tag: courseData.weekDay,
-                ort: courseData.place,
-                zeit: courseData.courseTime,
-                datumstart: courseData.startDate,
-                datumende: courseData.endDate,
-                leitung: courseData.management,
+            // Transform each entry object into a Course object
+            const courses: Course[] = response.data.map((entry: any) => ({
+                id: entry.id,
+                name: entry.courseName,
+                tag: entry.weekDay,
+                ort: entry.place,
+                zeit: entry.courseTime,
+                datumstart: entry.startDate,
+                datumende: entry.endDate,
+                leitung: entry.management,
                 selected: false
-                // Optionally add other properties here
-            };
-            kurse.value = [course]; // Assign an array containing the course object to kurse.value
+            }));
+
+            kurse.value = courses; // Assign the array of courses to kurse.value
             console.log(kurse.value);
         })
         .catch((error) => console.log(error));
 }
+
 
