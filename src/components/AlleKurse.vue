@@ -1,18 +1,33 @@
 <script setup lang="ts">
-import {kurse, requestCourses} from "@/scraper/testdata";
-import { extendMyCourses } from "@/scraper/testdata";
+import { ref, computed, onMounted } from 'vue';
+import { kurse, requestCourses, extendMyCourses } from "@/scraper/testdata";
 
-import { onMounted } from 'vue';
+
 onMounted(() => {
   requestCourses();
+});
+
+const searchQuery = ref('');
+
+// Filter
+const filteredCourses = computed(() => {
+  return kurse.value.filter(course =>
+      course.name.toLowerCase().includes(searchQuery.value.toLowerCase())
+  );
 });
 </script>
 
 <template>
   <div>
-    <!-- <button @click="requestCourses()">Load Courses</button> -->
     <h1>Alle Kurse</h1>
     <div class="container mt-3">
+      <!-- Search input field -->
+      <input
+          type="text"
+          v-model="searchQuery"
+          placeholder="Kurs suchen..."
+          class="form-control mb-3"
+      />
       <div class="table-responsive">
         <table class="table table-bordered table-hover">
           <thead>
@@ -27,7 +42,7 @@ onMounted(() => {
           </tr>
           </thead>
           <tbody>
-          <tr v-for="course in kurse" :key="course.name">
+          <tr v-for="course in filteredCourses" :key="course.name">
             <td>{{ course.name }}</td>
             <td>{{ course.tag }}</td>
             <td>{{ course.zeit }}</td>
