@@ -16,6 +16,7 @@ export function deleteMyCourses(courseName: string) {
     const course = kurse.value.find(c => c.name === courseName);
     if (course) {
         course.selected = false;
+        updateCourses(course);
     }
 }
 
