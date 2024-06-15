@@ -25,33 +25,18 @@ export function requestCourses() {
         .then((response) => {
             console.log(response.data); // Log the API response to inspect its structure
 
-            // Extract the IDs of all entries
-            const ids = response.data.map((entry: any) => entry.id);
-
-            // Create an array of promises to fetch each entry by ID
-            const entryPromises = ids.map((id: number) =>
-                axios.get<any>(`https://htwsportplanner.onrender.com/entries/${id}`)
-            );
-
-            // Wait for all promises to resolve
-            return Promise.all(entryPromises);
-        })
-        .then((responses) => {
-            // Transform each response object into a Course object
-            kurse.value = responses.map((response) => {
-                const entry = response.data;
-                return {
-                    id: entry.id,
-                    name: entry.courseName,
-                    tag: entry.weekDay,
-                    ort: entry.place,
-                    zeit: entry.courseTime,
-                    datumstart: entry.startDate,
-                    datumende: entry.endDate,
-                    leitung: entry.management,
-                    selected: entry.selected
-                };
-            }); // Assign the array of courses to kurse.value
+            // Transform each entry object into a Course object
+            kurse.value = response.data.map((entry: any) => ({
+                id: entry.id,
+                name: entry.courseName,
+                tag: entry.weekDay,
+                ort: entry.place,
+                zeit: entry.courseTime,
+                datumstart: entry.startDate,
+                datumende: entry.endDate,
+                leitung: entry.management,
+                selected: entry.selected
+            })); // Assign the array of courses to kurse.value
             console.log(kurse.value);
         })
         .catch((error) => console.log(error));
