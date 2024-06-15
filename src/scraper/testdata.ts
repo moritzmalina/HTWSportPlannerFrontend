@@ -8,7 +8,7 @@ export function extendMyCourses(myCoursesAdd: Course) {
     const course = kurse.value.find(c => c.name === myCoursesAdd.name);
     if (course) {
         course.selected = true;
-        updateCourses(course);
+        //updateCourses(course);
     }
 }
 
@@ -57,6 +57,7 @@ export function requestCourses() {
         .catch((error) => console.log(error));
 }
 
+/*
 function updateCourses(update: Course): void {
     axios
         .patch<Course>(`https://htwsportplanner.onrender.com/entries/${update.id}`, update)
@@ -67,3 +68,4 @@ function updateCourses(update: Course): void {
             console.error(`Error updating course ${update.name}:`, error);
         });
 }
+ */
