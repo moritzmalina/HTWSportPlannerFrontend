@@ -18,32 +18,6 @@ export function deleteMyCourses(courseName: string) {
     }
 }
 
-export function loadKurse() {
-   const baseURL = import.meta.env.VITE_APP_BACKEND_BASE_URL;
-    const endpoint = baseURL + '/entries/1';
-    const requestOptions: any = {
-        method: 'GET',
-        redirect: 'follow'
-    };
-    fetch(endpoint, requestOptions)
-        .then(res => res.json())
-        .then(result => {
-            kurse.value = result.map((entry: any) => ({
-                id: entry.id,
-                name: entry.courseName,
-                tag: entry.weekDay,
-                ort: entry.place,
-                zeit: entry.courseTime,
-                datumstart: entry.startDate,
-                datumende: entry.endDate,
-                leitung: entry.management,
-                selected: false
-            } as Course));
-            console.log(kurse.value);
-        })
-        .catch(error => console.log('error', error));
-}
-
 export function requestCourses() {
     axios
         .get<any>('https://htwsportplanner.onrender.com/entries')
@@ -68,4 +42,3 @@ export function requestCourses() {
         })
         .catch((error) => console.log(error));
 }
-

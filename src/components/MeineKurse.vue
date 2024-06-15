@@ -26,6 +26,7 @@
             <td>{{ course.datumende }}</td>
             <td>{{ course.leitung }}</td>
             <td>
+              <router-link :to="{ name: 'detail', params: { name: course.name } }"><button class ="btn btn-info me-2"> Detail </button></router-link>
               <button class="btn btn-danger" @click="removeCourse(course.name)">Entfernen</button>
             </td>
           </tr>
