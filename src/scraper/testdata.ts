@@ -8,6 +8,7 @@ export function extendMyCourses(myCoursesAdd: Course) {
     const course = kurse.value.find(c => c.name === myCoursesAdd.name);
     if (course) {
         course.selected = true;
+        updateCourses(course);
     }
 }
 
@@ -34,11 +35,22 @@ export function requestCourses() {
                 datumstart: entry.startDate,
                 datumende: entry.endDate,
                 leitung: entry.management,
-                selected: false
+                selected: entry.selected
             }));
 
             kurse.value = courses; // Assign the array of courses to kurse.value
             console.log(kurse.value);
         })
         .catch((error) => console.log(error));
+}
+
+function updateCourses(update: Course): void {
+    axios
+        .patch<Course>(`https://htwsportplanner.onrender.com/entries/${update.id}`, update)
+        .then((response) => {
+            console.log(`Course ${update.name} updated successfully:`, response.data);
+        })
+        .catch((error) => {
+            console.error(`Error updating course ${update.name}:`, error);
+        });
 }
