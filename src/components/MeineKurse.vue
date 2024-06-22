@@ -68,8 +68,8 @@
 </template>
 
 <script lang="ts">
-import {defineComponent, ref, computed, onMounted} from 'vue';
-import {deleteMyCourses, kurse, createCourses, requestCourses} from '@/scraper/testdata';
+import {defineComponent, ref, computed} from 'vue';
+import {deleteMyCourses, kurse, createCourses} from '@/scraper/testdata';
 
 export default defineComponent({
   name: 'Kurse',
