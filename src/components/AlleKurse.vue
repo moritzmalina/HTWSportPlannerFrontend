@@ -2,20 +2,21 @@
 import { ref, computed, onMounted } from 'vue';
 import { kurse, requestCourses, extendMyCourses } from "@/scraper/testdata";
 
-
+// Fetch courses when the component is mounted
 onMounted(() => {
   requestCourses();
 });
 
 const searchQuery = ref('');
 
-// Filter
+// Filter courses based on the search query
 const filteredCourses = computed(() => {
   return kurse.value.filter(course =>
-      course.name.toLowerCase().includes(searchQuery.value.toLowerCase())
+      course.courseName.toLowerCase().includes(searchQuery.value.toLowerCase())
   );
 });
 </script>
+
 
 <template>
   <div>
@@ -42,13 +43,13 @@ const filteredCourses = computed(() => {
           </tr>
           </thead>
           <tbody>
-          <tr v-for="course in filteredCourses" :key="course.name">
-            <td>{{ course.name }}</td>
-            <td>{{ course.tag }}</td>
-            <td>{{ course.zeit }}</td>
-            <td>{{ course.datumstart }} - {{ course.datumende }}</td>
-            <td>{{ course.ort }}</td>
-            <td>{{ course.leitung }}</td>
+          <tr v-for="course in filteredCourses" :key="course.id">
+            <td>{{ course.courseName }}</td>
+            <td>{{ course.weekDay }}</td>
+            <td>{{ course.courseTime }}</td>
+            <td>{{ course.startDate }} - {{ course.endDate }}</td>
+            <td>{{ course.place }}</td>
+            <td>{{ course.management }}</td>
             <td>
               <button class="btn btn-info" @click="extendMyCourses(course)">Hinzufügen</button>
             </td>
@@ -59,6 +60,7 @@ const filteredCourses = computed(() => {
     </div>
   </div>
 </template>
+
 
 <style scoped>
 h1 {

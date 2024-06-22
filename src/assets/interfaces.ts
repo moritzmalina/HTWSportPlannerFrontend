@@ -1,1 +1,11 @@
-export interface Course{id: number; name: string; tag: string; ort: string; zeit: string; datumstart:string; datumende:string; leitung: string; selected?: boolean;}
+export interface Course {
+    id: string;
+    courseName: string;
+    management: string;
+    place: string;
+    weekDay: string;
+    courseTime: string;
+    startDate: string;
+    endDate: string;
+    selected: boolean;
+}
