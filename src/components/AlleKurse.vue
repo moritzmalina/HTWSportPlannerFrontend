@@ -2,7 +2,6 @@
 import { ref, computed, onMounted } from 'vue';
 import { kurse, requestCourses, extendMyCourses } from "@/scraper/testdata";
 
-// Fetch courses when the component is mounted
 onMounted(() => {
   requestCourses();
 });

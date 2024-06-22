@@ -68,16 +68,14 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, computed } from 'vue';
-import { deleteMyCourses, kurse, createCourses } from '@/scraper/testdata';
-import type { Course } from "@/assets/interfaces";
+import {defineComponent, ref, computed, onMounted} from 'vue';
+import {deleteMyCourses, kurse, createCourses, requestCourses} from '@/scraper/testdata';
 
 export default defineComponent({
   name: 'Kurse',
   setup() {
     const myCourses = computed(() => kurse.value.filter(course => course.selected));
 
-    // Define reactive properties for the form inputs
     const creationName = ref('');
     const creationDay = ref('');
     const creationTime = ref('');
@@ -97,7 +95,7 @@ export default defineComponent({
 
     const addCourse = () => {
       const newCourse = {
-        id: '', // ID will be assigned by the backend
+        id: '',
         courseName: creationName.value,
         management: creationManagement.value,
         place: creationPlace.value,

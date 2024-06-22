@@ -24,9 +24,9 @@ export function requestCourses() {
     axios
         .get<any>('https://htwsportplanner.onrender.com/entries')
         .then((response) => {
-            console.log(response.data); // Log the API response to inspect its structure
+            console.log(response.data);
 
-            // Transform each entry object into a Course object
+
             kurse.value = response.data.map((entry: any) => ({
                 id: entry.id,
                 courseName: entry.courseName,
@@ -37,7 +37,7 @@ export function requestCourses() {
                 endDate: entry.endDate,
                 management: entry.management,
                 selected: entry.selected
-            })); // Assign the array of courses to kurse.value
+            }));
             console.log(kurse.value);
         })
         .catch((error) => console.log(error));

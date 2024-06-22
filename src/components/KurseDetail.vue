@@ -9,7 +9,7 @@ const courseName = ref<string>(route.params.name as string);
 const course = ref<Course | null>(null);
 
 const loadCourse = () => {
-  course.value = kurse.value.find(c => c.name === courseName.value) || null;
+  course.value = kurse.value.find(c => c.courseName === courseName.value) || null;
 };
 
 onMounted(loadCourse);
@@ -23,14 +23,14 @@ watch(() => route.params.name, (newName) => {
 
 <template>
   <div>
-    <h1>{{ course?.name }}</h1>
+    <h1>{{ course?.courseName }}</h1>
     <div class="container mt-3">
       <div v-if="course">
-        <p><strong>Tag:</strong> {{ course.tag }}</p>
-        <p><strong>Zeit:</strong> {{ course.zeit }}</p>
-        <p><strong>Zeitraum:</strong> {{ course.datumstart }} - {{ course.datumende }}</p>
-        <p><strong>Ort:</strong> {{ course.ort }}</p>
-        <p><strong>Leitung:</strong> {{ course.leitung }}</p>
+        <p><strong>Tag:</strong> {{ course.weekDay }}</p>
+        <p><strong>Zeit:</strong> {{ course.courseTime }}</p>
+        <p><strong>Zeitraum:</strong> {{ course.startDate }} - {{ course.endDate }}</p>
+        <p><strong>Ort:</strong> {{ course.place }}</p>
+        <p><strong>Leitung:</strong> {{ course.management }}</p>
       </div>
       <div v-else>
         <p>Kursdetails nicht gefunden.</p>
