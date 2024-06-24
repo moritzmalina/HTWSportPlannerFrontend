@@ -45,17 +45,27 @@
               <th>Kursbeginn</th>
               <th>Kursende</th>
               <th>Leitung</th>
+              <th>Beschreibung</th>
             </tr>
            </thead>
           <tbody>
             <tr>
               <td> <input type="text" v-model="creationName" /> </td>
-              <td> <input type="text" v-model="creationDay" /> </td>
+              <select v-model="creationDay">
+                <option value="Montag">Montag</option>
+                <option value="Dienstag">Dienstag</option>
+                <option value="Mittwoch">Mittwoch</option>
+                <option value="Donnerstag">Donnerstag</option>
+                <option value="Freitag">Freitag</option>
+                <option value="Samstag">Samstag</option>
+                <option value="Sonntag">Sonntag</option>
+              </select>
               <td> <input type="time" v-model="creationTime" /> </td>
               <td> <input type="text" v-model="creationPlace" /> </td>
               <td> <input type="date" v-model="creationBegin" /> </td>
               <td> <input type="date" v-model="creationEnd" /> </td>
               <td> <input type="text" v-model="creationManagement" /> </td>
+              <td> <input type="text" v-model="creationDescription" /> </td>
                 </tr>
               </tbody>
             </table>
@@ -83,6 +93,7 @@ export default defineComponent({
     const creationBegin = ref('');
     const creationEnd = ref('');
     const creationManagement = ref('');
+    const creationDescription = ref('');
 
     const removeCourse = (courseName: string) => {
       deleteMyCourses(courseName);
@@ -105,7 +116,7 @@ export default defineComponent({
         endDate: creationEnd.value,
         selected: true,
         color: true,
-        description: 'Test'
+        description: creationDescription.value
       };
 
       createCourses(newCourse);
@@ -118,6 +129,7 @@ export default defineComponent({
       creationBegin.value = '';
       creationEnd.value = '';
       creationManagement.value = '';
+      creationDescription.value = '';
     };
 
     return {
@@ -130,6 +142,7 @@ export default defineComponent({
       creationBegin,
       creationEnd,
       creationManagement,
+      creationDescription,
       addCourse
     };
   }
