@@ -36,7 +36,9 @@ export function requestCourses() {
                 startDate: entry.startDate,
                 endDate: entry.endDate,
                 management: entry.management,
-                selected: entry.selected
+                selected: entry.selected,
+                color: entry.color,
+                description: entry.description
             }));
             console.log(kurse.value);
         })

@@ -8,5 +8,6 @@ export interface Course {
     startDate: string;
     endDate: string;
     selected: boolean;
-    marked?: boolean;
+    color?: boolean;
+    description: string;
 }

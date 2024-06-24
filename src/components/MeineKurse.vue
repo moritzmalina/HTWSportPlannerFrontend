@@ -103,7 +103,9 @@ export default defineComponent({
         courseTime: creationTime.value,
         startDate: creationBegin.value,
         endDate: creationEnd.value,
-        selected: true
+        selected: true,
+        color: true,
+        description: 'Test'
       };
 
       createCourses(newCourse);

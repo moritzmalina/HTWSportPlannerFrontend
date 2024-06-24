@@ -16,9 +16,6 @@ const getTimeSlot = (time: string) => {
   return (hours - 8) * 50 + (minutes / 60) * 50; // Adjust 50 based on the height of your time slots
 };
 
-const markCourse = (kurs: Course) => {
-  kurs.marked = !kurs.marked;
-};
 </script>
 
 <template>
@@ -27,16 +24,19 @@ const markCourse = (kurs: Course) => {
     <div
         v-for="kurs in filteredCourses"
         :key="kurs.id"
-        :style="{ top: `${getTimeSlot(kurs.courseTime.split('-')[0])}px`, backgroundColor: kurs.marked ? 'red' : 'lightblue' }"
+        :style="{
+            top: `${getTimeSlot(kurs.courseTime.split('-')[0])}px`,
+            backgroundColor: kurs.color ? 'lightgreen' : 'lightblue'
+        }"
         class="course"
     >
       {{ kurs.courseName }} <br>
       {{ kurs.place }} <br>
       {{ kurs.courseTime }} <br>
-      <button @click="markCourse(kurs)">Markieren</button>
     </div>
   </div>
 </template>
+
 
 <style scoped>
 .day-schedule {

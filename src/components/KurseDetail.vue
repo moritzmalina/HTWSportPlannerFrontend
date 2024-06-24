@@ -31,6 +31,7 @@ watch(() => route.params.name, (newName) => {
         <p><strong>Zeitraum:</strong> {{ course.startDate }} - {{ course.endDate }}</p>
         <p><strong>Ort:</strong> {{ course.place }}</p>
         <p><strong>Leitung:</strong> {{ course.management }}</p>
+        <p><strong>Beschreibung:</strong> {{ course.description }}</p>
       </div>
       <div v-else>
         <p>Kursdetails nicht gefunden.</p>
