@@ -64,3 +64,15 @@ export function createCourses(create: Course) {
             console.error(`Error creating course ${create.courseName}:`, error);
         });
 }
+
+export function deleteCourses(courseDelete: Course) {
+    axios
+        .delete(`https://htwsportplanner.onrender.com/entries/${courseDelete.id}`)
+        .then((response) => {
+            console.log(`Course with ID ${courseDelete.id} deleted successfully:`, response.data);
+            kurse.value = kurse.value.filter(course => course.id !== courseDelete.id);
+        })
+        .catch((error) => {
+            console.error(`Error deleting course with ID ${courseDelete}:`, error);
+        });
+}

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, computed, onMounted } from 'vue';
-import { kurse, requestCourses, extendMyCourses } from "@/scraper/testdata";
+import {kurse, requestCourses, extendMyCourses, deleteCourses} from "@/scraper/testdata";
 
 onMounted(() => {
   requestCourses();
@@ -50,7 +50,8 @@ const filteredCourses = computed(() => {
             <td>{{ course.place }}</td>
             <td>{{ course.management }}</td>
             <td>
-              <button class="btn btn-info" @click="extendMyCourses(course)">Hinzufügen</button>
+              <button class="btn btn-info me-2" @click="extendMyCourses(course)">Hinzufügen</button>
+              <button class="btn btn-danger" @click="deleteCourses(course)">Löschen</button>
             </td>
           </tr>
           </tbody>
