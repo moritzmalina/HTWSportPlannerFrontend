@@ -2,7 +2,7 @@
 import WochenTag from '@/components/WochenTag.vue'
 import { kurse } from "@/scraper/testdata"; // Ensure the correct import path
 
-const tage: string[] = ["Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag", "Sonntag"];
+const tage: string[] = ["Mo", "Di", "Mi", "Do", "Fr", "Sa", "So"];
 </script>
 
 <template>

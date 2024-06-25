@@ -52,13 +52,13 @@
             <tr>
               <td> <input type="text" v-model="creationName" /> </td>
               <select v-model="creationDay">
-                <option value="Montag">Montag</option>
-                <option value="Dienstag">Dienstag</option>
-                <option value="Mittwoch">Mittwoch</option>
-                <option value="Donnerstag">Donnerstag</option>
-                <option value="Freitag">Freitag</option>
-                <option value="Samstag">Samstag</option>
-                <option value="Sonntag">Sonntag</option>
+                <option value="Mo">Montag</option>
+                <option value="Di">Dienstag</option>
+                <option value="Mi">Mittwoch</option>
+                <option value="Do">Donnerstag</option>
+                <option value="Fr">Freitag</option>
+                <option value="Sa">Samstag</option>
+                <option value="So">Sonntag</option>
               </select>
               <td> <input type="time" v-model="creationTime" /> </td>
               <td> <input type="text" v-model="creationPlace" /> </td>
