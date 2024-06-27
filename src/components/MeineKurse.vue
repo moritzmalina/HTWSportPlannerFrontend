@@ -17,7 +17,7 @@
           </tr>
           </thead>
           <tbody>
-          <tr v-for="course in myCourses" :key="course.courseName">
+          <tr v-for="course in myCourses" :key="course.id">
             <td>{{ course.courseName }}</td>
             <td>{{ course.weekDay }}</td>
             <td>{{ course.courseTime }}</td>
