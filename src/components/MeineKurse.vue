@@ -27,7 +27,7 @@
             <td>{{ course.management }}</td>
             <td>
               <router-link :to="{ name: 'detail', params: { name: course.courseName } }"><button class ="btn btn-info me-2"> Detail </button></router-link>
-              <button class="btn btn-danger" @click="removeCourse(course.courseName)">Entfernen</button>
+              <button class="btn btn-danger" @click="removeCourse(course.id)">Entfernen</button>
             </td>
           </tr>
           </tbody>
@@ -95,10 +95,11 @@ export default defineComponent({
     const creationManagement = ref('');
     const creationDescription = ref('');
 
-    const removeCourse = (courseName: string) => {
-      deleteMyCourses(courseName);
 
-      const course = kurse.value.find(course => course.courseName === courseName);
+    const removeCourse = (courseId: string) => {
+      deleteMyCourses(courseId);
+
+      const course = kurse.value.find(course => course.id === courseId);
       if (course) {
         course.selected = false;
       }

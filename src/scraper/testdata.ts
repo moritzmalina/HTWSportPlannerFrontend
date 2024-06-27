@@ -5,15 +5,15 @@ import axios from 'axios';
 export const kurse = ref<Course[]>([]);
 
 export function extendMyCourses(myCoursesAdd: Course) {
-    const course = kurse.value.find(c => c.courseName === myCoursesAdd.courseName);
+    const course = kurse.value.find(c => c.id === myCoursesAdd.id);
     if (course) {
         course.selected = true;
         updateCourses(course);
     }
 }
 
-export function deleteMyCourses(courseName: string) {
-    const course = kurse.value.find(c => c.courseName === courseName);
+export function deleteMyCourses(courseId: string) {
+    const course = kurse.value.find(c => c.id === courseId);
     if (course) {
         course.selected = false;
         updateCourses(course);
