@@ -1,14 +1,13 @@
 <script setup lang="ts">
 import WochenTag from '@/components/WochenTag.vue'
-import { kurse } from "@/scraper/testdata"; // Ensure the correct import path
-
+import { kurse } from "@/scraper/testdata";
 const tage: string[] = ["Mo", "Di", "Mi", "Do", "Fr", "Sa", "So"];
 </script>
 
 <template>
   <div class="container shadow">
     <div class="time-slots">
-      <div v-for="hour in 12" :key="hour" class="time-slot">
+      <div v-for="hour in 16" :key="hour" class="time-slot">
         {{ 8 + hour }}:00
       </div>
     </div>

@@ -1,9 +1,59 @@
 <template>
+  <br/>
   <div>
-    <h1>Meine Kurse</h1>
+    <div class="head-titel">
+      <h1 class="ms-5 text">Meine Kurse</h1>
+      <div class="buttons-container">
+        <button v-if="showAddCourseForm" class="btn btn-outline-success btn-add" @click="addCourse">Hinzufügen</button>
+        <button class="btn btn-outline-primary btn-new" @click="toggleAddCourseForm">Neuen Kurs hinzufügen</button>
+      </div>
+    </div>
+    <!-- Formular zum Hinzufügen eines neuen Kurses -->
+    <div v-if="showAddCourseForm" class="container mt-3">
+      <div class="table-responsive">
+        <table class="table table-bordered">
+          <thead>
+          <tr>
+            <th>Kursname</th>
+            <th>Tag</th>
+            <th>Zeitpunkt</th>
+            <th>Ort</th>
+            <th>Kursbeginn</th>
+            <th>Kursende</th>
+            <th>Leitung</th>
+            <th>Beschreibung</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td><input class="form-control" type="text" v-model="creationName" /></td>
+            <td>
+              <select class="form-select" v-model="creationDay">
+                <option value="Mo">Montag</option>
+                <option value="Di">Dienstag</option>
+                <option value="Mi">Mittwoch</option>
+                <option value="Do">Donnerstag</option>
+                <option value="Fr">Freitag</option>
+                <option value="Sa">Samstag</option>
+                <option value="So">Sonntag</option>
+              </select>
+            </td>
+            <td><input class="form-control" type="time" v-model="creationTime" /></td>
+            <td><input class="form-control" type="text" v-model="creationPlace" /></td>
+            <td><input class="form-control" type="date" v-model="creationBegin" /></td>
+            <td><input class="form-control" type="date" v-model="creationEnd" /></td>
+            <td><input class="form-control" type="text" v-model="creationManagement" /></td>
+            <td><input class="form-control" type="text" v-model="creationDescription" /></td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Tabelle für bestehende Kurse -->
     <div class="container mt-3">
       <div class="table-responsive">
-        <table class="table table-bordered table-hover">
+        <table class="table table-bordered">
           <thead>
           <tr>
             <th>Kursname</th>
@@ -25,65 +75,29 @@
             <td>{{ course.startDate }}</td>
             <td>{{ course.endDate }}</td>
             <td>{{ course.management }}</td>
-            <td>
-              <router-link :to="{ name: 'detail', params: { name: course.courseName } }"><button class ="btn btn-info me-2"> Detail </button></router-link>
-              <button class="btn btn-danger" @click="removeCourse(course.id)">Entfernen</button>
+            <td class="flex-td">
+              <router-link :to="{ name: 'detail', params: { name: course.courseName } }">
+                <button class="btn btn-outline-primary me-2">Detail</button>
+              </router-link>
+              <button class="btn btn-outline-danger" @click="removeCourse(course.id)">Entfernen</button>
             </td>
           </tr>
           </tbody>
         </table>
-        <h2>Kurs hinzufügen</h2>
-        <div class="container mt-3">
-          <div class="table-responsive">
-            <table class="table table-bordered table-hover">
-            <thead>
-            <tr>
-              <th>Kursname</th>
-              <th>Tag</th>
-              <th>Zeitpunkt</th>
-              <th>Ort</th>
-              <th>Kursbeginn</th>
-              <th>Kursende</th>
-              <th>Leitung</th>
-              <th>Beschreibung</th>
-            </tr>
-           </thead>
-          <tbody>
-            <tr>
-              <td> <input type="text" v-model="creationName" /> </td>
-              <select v-model="creationDay">
-                <option value="Mo">Montag</option>
-                <option value="Di">Dienstag</option>
-                <option value="Mi">Mittwoch</option>
-                <option value="Do">Donnerstag</option>
-                <option value="Fr">Freitag</option>
-                <option value="Sa">Samstag</option>
-                <option value="So">Sonntag</option>
-              </select>
-              <td> <input type="time" v-model="creationTime" /> </td>
-              <td> <input type="text" v-model="creationPlace" /> </td>
-              <td> <input type="date" v-model="creationBegin" /> </td>
-              <td> <input type="date" v-model="creationEnd" /> </td>
-              <td> <input type="text" v-model="creationManagement" /> </td>
-              <td> <input type="text" v-model="creationDescription" /> </td>
-                </tr>
-              </tbody>
-            </table>
-            <button @click="addCourse"> Hinzufügen </button>
-          </div>
-        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import {defineComponent, ref, computed, onMounted} from 'vue';
-import {deleteMyCourses, kurse, createCourses, requestCourses} from '@/scraper/testdata';
+import { defineComponent, ref, computed } from 'vue';
+import { deleteMyCourses, createCourses, kurse, requestCourses } from '@/scraper/testdata';
+import { useRouter } from 'vue-router';
 
 export default defineComponent({
   name: 'Kurse',
   setup() {
+    const router = useRouter();
     const myCourses = computed(() => kurse.value.filter(course => course.selected));
 
     const creationName = ref('');
@@ -95,10 +109,10 @@ export default defineComponent({
     const creationManagement = ref('');
     const creationDescription = ref('');
 
+    const showAddCourseForm = ref(false);
 
     const removeCourse = (courseId: string) => {
       deleteMyCourses(courseId);
-
       const course = kurse.value.find(course => course.id === courseId);
       if (course) {
         course.selected = false;
@@ -123,6 +137,18 @@ export default defineComponent({
       createCourses(newCourse);
 
       // Reset input fields
+      resetFormFields();
+
+      // Hide the form after adding course
+      showAddCourseForm.value = false;
+    };
+
+    const toggleAddCourseForm = () => {
+      resetFormFields();
+      showAddCourseForm.value = !showAddCourseForm.value;
+    };
+
+    const resetFormFields = () => {
       creationName.value = '';
       creationDay.value = '';
       creationTime.value = '';
@@ -132,10 +158,6 @@ export default defineComponent({
       creationManagement.value = '';
       creationDescription.value = '';
     };
-
-    onMounted(() => {
-      requestCourses();
-    });
 
     return {
       myCourses,
@@ -148,14 +170,41 @@ export default defineComponent({
       creationEnd,
       creationManagement,
       creationDescription,
-      addCourse
+      addCourse,
+      toggleAddCourseForm,
+      showAddCourseForm
     };
   }
 });
 </script>
 
 <style scoped>
-h1 {
-  margin-left: 7vw;
+.head-titel {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: 5%;
+}
+
+.buttons-container {
+  display: flex;
+  margin-right: 8.5%;
+}
+
+.btn-add {
+  margin-left: 10px;
+}
+
+.btn-new {
+  margin-left: 10px;
+}
+
+.flex-td {
+  display: flex;
+  justify-content: space-between;
+}
+
+.table td {
+  padding: 10px;
 }
 </style>

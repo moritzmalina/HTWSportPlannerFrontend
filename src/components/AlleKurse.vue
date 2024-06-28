@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, computed, onMounted } from 'vue';
-import {kurse, requestCourses, extendMyCourses, deleteCourses} from "@/scraper/testdata";
+import { kurse, requestCourses, extendMyCourses, deleteCourses } from "@/scraper/testdata";
 
 onMounted(() => {
   requestCourses();
@@ -8,28 +8,30 @@ onMounted(() => {
 
 const searchQuery = ref('');
 
-// Filter courses based on the search query
+
 const filteredCourses = computed(() => {
   return kurse.value.filter(course =>
-      course.courseName.toLowerCase().includes(searchQuery.value.toLowerCase())
+    course.courseName.toLowerCase().includes(searchQuery.value.toLowerCase())
   );
 });
 </script>
 
-
 <template>
+  <br/>
   <div>
-    <h1>Alle Kurse</h1>
+    <div class="head-titel">
+      <h1>Alle Kurse</h1>
+    </div>
     <div class="container mt-3">
       <!-- Search input field -->
       <input
-          type="text"
-          v-model="searchQuery"
-          placeholder="Kurs suchen..."
-          class="form-control mb-3"
+        type="text"
+        v-model="searchQuery"
+        placeholder="Kurs suchen..."
+        class="form-control mb-3"
       />
       <div class="table-responsive">
-        <table class="table table-bordered table-hover">
+        <table class="table table-bordered">
           <thead>
           <tr>
             <th>Kursname</th>
@@ -49,9 +51,9 @@ const filteredCourses = computed(() => {
             <td>{{ course.startDate }} - {{ course.endDate }}</td>
             <td>{{ course.place }}</td>
             <td>{{ course.management }}</td>
-            <td>
-              <button class="btn btn-info me-2" @click="extendMyCourses(course)">Hinzufügen</button>
-              <button class="btn btn-danger" @click="deleteCourses(course)">Löschen</button>
+            <td class="flex-td">
+              <button class="btn btn btn-outline-success me-2" @click="extendMyCourses(course)">Hinzufügen</button>
+              <button class="btn btn-outline-danger" @click="deleteCourses(course)">Löschen</button>
             </td>
           </tr>
           </tbody>
@@ -61,9 +63,16 @@ const filteredCourses = computed(() => {
   </div>
 </template>
 
-
 <style scoped>
 h1 {
   margin-left: 7vw;
+}
+
+.flex-td {
+  display: flex;
+  justify-content: space-between;
+}
+.head-titel {
+  margin-left: 1%;
 }
 </style>
