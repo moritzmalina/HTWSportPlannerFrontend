@@ -8,7 +8,7 @@ const props = defineProps<{
 }>();
 
 const filteredCourses = computed(() =>
-  kurse.value.filter(kurs => kurs.weekDay === props.tag && kurs.selected)
+    kurse.value.filter(kurs => kurs.weekDay === props.tag && kurs.selected)
 );
 
 const getTimeSlot = (time: string) => {
@@ -32,14 +32,14 @@ const calculateEndTime = (startTime: string) => {
   <h5>{{ tag }}</h5>
   <div class="day-schedule">
     <div
-      v-for="kurs in filteredCourses"
-      :key="kurs.id"
-      :style="{
+        v-for="kurs in filteredCourses"
+        :key="kurs.id"
+        :style="{
         top: `${getTimeSlot(kurs.courseTime.split('-')[0])}px`,
         height: '75px', // 1.5 hours represented as 75px
         backgroundColor: kurs.color ? 'lightgreen' : 'lightblue'
       }"
-      class="course"
+        class="course"
     >
       <span class="course-name">{{ kurs.courseName }}</span>
     </div>
@@ -49,7 +49,7 @@ const calculateEndTime = (startTime: string) => {
 <style scoped>
 .day-schedule {
   position: relative;
-  height: 750px; /* Adjusted to fit from 8:00 to 23:00 (15 hours * 50px) */
+  height: 650px; /* Adjusted to fit from 8:00 to 21:00 (13 hours * 50px) */
   border: 1px solid #ccc;
 }
 
@@ -68,7 +68,7 @@ const calculateEndTime = (startTime: string) => {
 
 .course-name {
   display: inline-block;
-  font-size: 14px; /* Default font size */
+  font-size: 10px; /* Default font size */
   white-space: normal; /* Allow text to wrap within the box */
   word-break: break-word; /* Break long words */
 }
