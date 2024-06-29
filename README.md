@@ -1,8 +1,8 @@
-#HTW Sport Planner Frontend
+# HTW Sport Planner Frontend
 
 Das HTW Sport Planner Frontend ist die Benutzeroberfläche für den Sport Planner der Hochschule für Technik und Wirtschaft (HTW) Berlin, entwickelt als Teil eines Projekts im Modul Webtechnologien.
 
-#Funktionalitäten:
+## Funktionalitäten:
 
 Alle Kurse:
    - Sehen Sie die aktuellen Sportkurse der HTW ein.
@@ -21,29 +21,32 @@ Kalender:
    - Visualisieren Sie Ihre ausgewählten Kurse in einem Planner.
    - Planen Sie Ihre Termine mit einer Ansicht, die HTW Sportkurse in Blau und eigene erstellte Kurse in Grün markiert.
 
-#Integration mit anderen Repositories
+## Integration mit anderen Repositories
 
-Dieses Repository arbeitet zusammen mit:
+Dieses Repository verwendet:
 
-    Backend: HTW Sport Planner Backend https://github.com/moritzmalina/HTWSportPlanner
-    Scraper: HTW Scraper https://github.com/lawszki/htw-scraper
+   [HTW Sport Planner Backend](https://github.com/moritzmalina/HTWSportPlanner). 
+   
+   [HTW Scraper](https://github.com/lawszki/htw-scraper).
+   
 
-Installation und Ausführung
+## Installation und Ausführung
 
 Um das Frontend lokal zu installieren und auszuführen, führen Sie die folgenden Schritte aus:
 
-    Clone das Repository:
-
+Clone das Repository:
+```bash
 git clone https://github.com/moritzmalina/HTWSportPlannerFrontend.git
+```
 
-Installieren Sie die Abhängigkeiten:
-
-Stellen Sie sicher, dass Node.js und npm auf Ihrem System installiert sind. Führen Sie dann Folgendes aus:
-
+Stellen Sie sicher, dass Node.js und npm auf Ihrem System installiert sind, führen Sie dann folgenden Befehl aus:
+```bash
 npm install
+```
 
 Starten Sie die Anwendung:
-
+```bash
 npm run dev
+```
 
 Öffnen Sie Ihren Browser und navigieren Sie zu dem localhost welcher in ihrem Terminal ausgegeben wird.
