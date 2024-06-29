@@ -5,7 +5,7 @@
         <button class="btn btn-outline-danger me-2">Zurück zu Meine Kurse</button>
       </router-link>
       <button v-if="hasPreviousCourse" class="btn btn-outline-success me-2" @click="goToPreviousCourse">Letzter Kurs</button>
-      <button v-else class="btn btn-outline-success me-2" disabled>Letzter Kurs</button>
+      <button v-else class="btn btn-outline-dark me-2" disabled>Letzter Kurs</button>
       <button v-if="hasNextCourse" class="btn btn-outline-success" @click="goToNextCourse">Nächster Kurs</button>
       <button v-else class="btn btn-outline-dark" disabled>Nächster Kurs</button>
     </div>
