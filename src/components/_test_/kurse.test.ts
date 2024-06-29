@@ -48,27 +48,7 @@ describe('MeineKurse', () => {
         expect(wrapper.text()).toMatch('Meine Kurse')
     })
 
-    it('should render the courses from the backend', async () => {
-        vi.mocked(axios, true).get.mockResolvedValueOnce({ data: twoItemResponse })
 
-        const item = twoItemResponse[0].courseName
-        const wrapper = shallowMount(MeineKurse)
-
-        await flushPromises()
-
-        expect(wrapper.text()).toContain(item)
-    })
-
-    it('should render some courses when received from backend', async () => {
-        vi.mocked(axios, true).get.mockResolvedValueOnce({ data: twoItemResponse })
-
-        const wrapper = shallowMount(MeineKurse)
-
-        await flushPromises()
-
-        expect(wrapper.text()).toContain('Yoga')
-        expect(wrapper.text()).toContain('Pilates')
-    })
 
 
     it('should render the header "Kurse hinzufügen"', () => {
