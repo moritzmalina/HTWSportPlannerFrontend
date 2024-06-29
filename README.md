@@ -1,6 +1,6 @@
 # HTW Sport Planner Frontend
 
-Das HTW Sport Planner Frontend ist die Benutzeroberfläche für den Sport Planner der Hochschule für Technik und Wirtschaft (HTW) Berlin, entwickelt als Teil eines Projekts im Modul Webtechnologien.
+Das HTW Sport Planner Frontend ist die Benutzeroberfläche für den Sport Planner, entwickelt als Teil eines Projekts im Modul Webtechnologien.
 
 ## Funktionalitäten:
 
