@@ -76,7 +76,7 @@
             <td>{{ course.endDate }}</td>
             <td>{{ course.management }}</td>
             <td class="flex-td">
-              <router-link :to="{ name: 'detail', params: { name: course.courseName } }">
+              <router-link :to="{ name: 'detail', params: { id: course.id, name: course.courseName } }">
                 <button class="btn btn-outline-primary me-2">Detail</button>
               </router-link>
               <button class="btn btn-outline-danger" @click="removeCourse(course.id)">Entfernen</button>
