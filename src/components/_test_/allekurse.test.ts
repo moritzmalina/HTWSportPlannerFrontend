@@ -1,7 +1,7 @@
 import { describe, it, expect, vi } from 'vitest'
 import { shallowMount, flushPromises } from '@vue/test-utils'
-import AlleKurse from "@/components/AlleKurse.vue" // Adjust the import to match your component's file path
-import { kurse, requestCourses } from "@/scraper/testdata"
+import AlleKurse from "@/components/AlleKurse.vue"
+
 
 describe('AlleKurse', () => {
     vi.mock('axios')

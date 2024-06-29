@@ -1,7 +1,6 @@
 import { describe, it, expect, vi } from 'vitest'
 import { shallowMount, flushPromises } from '@vue/test-utils'
 import MeineKurse from "@/components/MeineKurse.vue";
-import {kurse} from "@/scraper/testdata";
 import axios from 'axios'
 
 describe('MeineKurse', () => {
