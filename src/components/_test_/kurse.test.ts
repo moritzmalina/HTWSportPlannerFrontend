@@ -44,7 +44,7 @@ describe('MeineKurse', () => {
         vi.mocked(axios, true).get.mockResolvedValueOnce({ data: emptyResponse })
 
         const wrapper = shallowMount(MeineKurse)
-        expect(wrapper.text()).toMatch('Meine Kursee')
+        expect(wrapper.text()).toMatch('Meine Kurse')
     })
 
 
