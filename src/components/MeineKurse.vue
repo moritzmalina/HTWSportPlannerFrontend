@@ -90,7 +90,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, computed } from 'vue';
+import {defineComponent, ref, computed, onMounted} from 'vue';
 import { deleteMyCourses, createCourses, kurse, requestCourses } from '@/scraper/testdata';
 import { useRouter } from 'vue-router';
 
@@ -110,6 +110,10 @@ export default defineComponent({
     const creationDescription = ref('');
 
     const showAddCourseForm = ref(false);
+
+    onMounted(() => {
+      requestCourses();
+    });
 
     const removeCourse = (courseId: string) => {
       deleteMyCourses(courseId);
@@ -139,7 +143,7 @@ export default defineComponent({
       // Reset input fields
       resetFormFields();
 
-      // Hide the form after adding course
+
       showAddCourseForm.value = false;
     };
 
