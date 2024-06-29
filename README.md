@@ -1,45 +1,49 @@
-# htw_sport_planner_frontend
+#HTW Sport Planner Frontend
 
-This template should help get you started developing with Vue 3 in Vite.
+Das HTW Sport Planner Frontend ist die Benutzeroberfläche für den Sport Planner der Hochschule für Technik und Wirtschaft (HTW) Berlin, entwickelt als Teil eines Projekts im Modul Webtechnologien.
+Funktionalität
+Alle Kurse:
 
-## Recommended IDE Setup
+    Sehen Sie die aktuellen Sportkurse der HTW ein.
+    Durchsuchen Sie verfügbare Sportkurse.
+    Fügen Sie Sportkurse zu Ihrer Liste "Meine Kurse" hinzu.
+    Löschen Sie Kurse aus der Liste.
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+Meine Kurse:
 
-## Type Support for `.vue` Imports in TS
+    Zeigen Sie eine Übersicht Ihrer ausgewählten Kurse an.
+    Fügen Sie neue Kurse hinzu, z.B. Vorlesungen oder andere persönliche Termine.
+    Zeigen Sie detaillierte Informationen zu den Kursen an.
+    Entfernen Sie Kurse aus Ihrer Liste.
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
+Kalender:
 
-## Customize configuration
+    Visualisieren Sie Ihre ausgewählten Kurse in einem Kalender.
+    Planen Sie Ihre Termine mit einer Ansicht, die HTW Sportkurse in Blau und eigene erstellte Kurse in Grün markiert.
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+Integration mit anderen Repositories
 
-## Project Setup
+Dieses Repository arbeitet zusammen mit:
 
-```sh
+    Backend: HTW Sport Planner Backend https://github.com/moritzmalina/HTWSportPlanner
+    Scraper: HTW Scraper https://github.com/lawszki/htw-scraper
+
+Installation und Ausführung
+
+Um das Frontend lokal zu installieren und auszuführen, führen Sie die folgenden Schritte aus:
+
+    Clone das Repository:
+
+git clone https://github.com/moritzmalina/HTWSportPlannerFrontend.git
+
+Installieren Sie die Abhängigkeiten:
+
+Stellen Sie sicher, dass Node.js und npm auf Ihrem System installiert sind. Führen Sie dann Folgendes aus:
+
 npm install
-```
 
-### Compile and Hot-Reload for Development
+Starten Sie die Anwendung:
 
-```sh
 npm run dev
-```
 
-### Type-Check, Compile and Minify for Production
-
-```sh
-npm run build
-```
-
-### Run Unit Tests with [Vitest](https://vitest.dev/)
-
-```sh
-npm run test:unit
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
-```
+Öffnen Sie Ihren Browser und navigieren Sie zu dem localhost welcher in ihrem Terminal ausgegeben wird.
