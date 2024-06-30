@@ -19,7 +19,7 @@ const tage: string[] = ["Mo", "Di", "Mi", "Do", "Fr", "Sa", "So"];
 
 <style scoped>
 .container {
-  background-color: whitesmoke;
+  background-color: #f4f4f4;
   margin-top: 5vh;
   border-radius: 10px;
   display: flex;
@@ -45,10 +45,9 @@ const tage: string[] = ["Mo", "Di", "Mi", "Do", "Fr", "Sa", "So"];
 
 .containerDay {
   margin: auto;
-  margin-top: 2vh;
   flex-grow: 1;
   display: flex;
   flex-direction: column;
-  gap: 10px; /* Adjust the gap as needed */
+  gap: 10px;
 }
 </style>

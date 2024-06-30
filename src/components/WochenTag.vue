@@ -13,7 +13,7 @@ const filteredCourses = computed(() =>
 
 const getTimeSlot = (time: string) => {
   const [hours, minutes] = time.split(':').map(Number);
-  return (hours - 8) * 50 + (minutes / 60) * 50; // Adjust 50 based on the height of your time slots
+  return (hours - 8) * 50 + (minutes / 60) * 50 -40;
 };
 
 const calculateEndTime = (startTime: string) => {
@@ -50,7 +50,8 @@ const calculateEndTime = (startTime: string) => {
 .day-schedule {
   position: relative;
   height: 650px; /* Adjusted to fit from 8:00 to 21:00 (13 hours * 50px) */
-  border: 1px solid #ccc;
+  border-right: lightgrey solid 1px;
+  border-left: lightgrey solid 1px;
 }
 
 .course {
@@ -76,6 +77,6 @@ const calculateEndTime = (startTime: string) => {
 .course-name:after {
   content: ' ';
   display: block;
-  font-size: 10px; /* Adjust this value to see if it works better */
+  font-size: 10px;
 }
 </style>
